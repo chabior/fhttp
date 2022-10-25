@@ -1740,10 +1740,7 @@ func (cc *ClientConn) encodeHeaders(req *http.Request, trailers string, contentL
 		}
 
 		for _, kv := range kvs {
-			if strings.EqualFold(kv.Key, "host") {
-				// Host is :authority, already sent.
-				continue
-			} else if strings.EqualFold(kv.Key, "connection") || strings.EqualFold(kv.Key, "proxy-connection") ||
+			if strings.EqualFold(kv.Key, "connection") || strings.EqualFold(kv.Key, "proxy-connection") ||
 				strings.EqualFold(kv.Key, "transfer-encoding") || strings.EqualFold(kv.Key, "upgrade") ||
 				strings.EqualFold(kv.Key, "keep-alive") {
 				// Per 8.1.2.2 Connection-Specific Header
